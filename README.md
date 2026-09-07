@@ -8,14 +8,7 @@
   Tinker CAD tool (Online)
 	Arduino UNO Board/ESP-32
   Gas sensor (MQ-2)
-	
-## Circuit Diagram:
-
- 
-
-
-
-
+  
 ## Theory :
  The Arduino Uno is powered by the ATmega328P, an 8-bit microcontroller that runs at 16 MHz. It has 32 KB of flash memory, 2 KB of SRAM, and 1 KB of EEPROM. The board 
 has 14 digital I/O pins (of which 6 can be used as PWM outputs) and 6 analog input pins. These pins allow the board to interface with various sensors, actuators, and other devices.
@@ -57,10 +50,28 @@ Step 7: Save Your Work
 •	Save the Circuit: Click "Save" to keep your circuit design and code for future use.
 
 ## Program:
+```
+int gas = 0;
 
+void setup()
+{
+  pinMode(A0, INPUT);
+  pinMode(4, OUTPUT);
+}
+
+void loop()
+{
+  gas = analogRead(A0);
+  if (gas > 100) {
+    tone(4, 523, 1000); // play tone 60 (C5 = 523 Hz)
+  }
+  delay(10); 
+}
+```
 ## Output:
 
-   
+<img width="1470" height="840" alt="image" src="https://github.com/user-attachments/assets/0c1b1ca8-f1dd-4727-bd40-1ceb42f7d478" />
 
 ## Result:
 
+Thus gas leakage detection using gas sensor is simulated successfully.
